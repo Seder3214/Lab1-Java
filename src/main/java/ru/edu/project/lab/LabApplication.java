@@ -1,26 +1,26 @@
 package ru.edu.project.lab;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Before;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.RequestBody;
-import ru.edu.project.lab.controller.AuthorController;
-import ru.edu.project.lab.AuthorService;
-import ru.edu.project.lab.AuthorRepository;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.List;
-
+@OpenAPIDefinition(
+		info=@Info(
+				title = "PenzGtu Java Lab API",
+				description = "API fro labs", version = "1.0.0",
+				contact = @Contact(
+						name = "Student PenzGTU",
+						email="aldandrei999@gmail.com"
+				)
+		)
+)
 @SpringBootApplication
+@EnableWebMvc
 public class LabApplication {
 	public static void main(String[] args) {
-		for(int i =0; i<100;i++) {
-		}
 		SpringApplication.run(LabApplication.class, args);
 	}
 

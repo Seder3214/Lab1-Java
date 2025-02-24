@@ -1,4 +1,4 @@
-package ru.edu.project.lab;
+package ru.edu.project.lab.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -10,7 +10,8 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-public class Book {
+@Table(name="music")
+public class Music {
     @Id
     @GeneratedValue
     @Column(name="id")
@@ -19,6 +20,6 @@ public class Book {
     @Column(name="name")
     private String name;
 
-    @ManyToMany(mappedBy="books")
-    private List<Author> authors;
+    @ManyToMany(mappedBy="music")
+    private List<Composer> composers;
 }
