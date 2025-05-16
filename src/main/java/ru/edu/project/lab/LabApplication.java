@@ -9,8 +9,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @OpenAPIDefinition(
 		info=@Info(
+
 				title = "PenzGtu Java Lab API",
-				description = "API fro labs", version = "1.0.0",
+				description = "API fro labs", version = "3.0.0",
 				contact = @Contact(
 						name = "Student PenzGTU",
 						email="aldandrei999@gmail.com"

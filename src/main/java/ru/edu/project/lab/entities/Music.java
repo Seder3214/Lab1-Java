@@ -10,7 +10,6 @@ import java.util.List;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Entity
-@Table(name="music")
 public class Music {
     @Id
     @GeneratedValue

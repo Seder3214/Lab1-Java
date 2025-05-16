@@ -1,5 +1,5 @@
 server:
-  port: 8086
+  port: 8082
 spring:
   datasource:
     driver-class-name: org.sqlite.JDBC
@@ -12,3 +12,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+springdoc:
+  api-docs:
+    version: openapi_3_0

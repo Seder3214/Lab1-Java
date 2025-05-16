@@ -2,8 +2,9 @@ package ru.edu.project.lab.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.edu.project.lab.entities.Music;
+import ru.edu.project.lab.Repository.ComposerRepository;
 import ru.edu.project.lab.Repository.MusicRepository;
+import ru.edu.project.lab.entities.Music;
 
 import java.util.List;
 
@@ -12,24 +13,23 @@ import java.util.List;
 public class MusicService {
     private final MusicRepository composerRepository;
 
-    public List<Music> findAllBooks(Long id) {
+    public List<Music> findAllMusic(Long id) {
         return composerRepository.findAll();
     }
 
-    public Music findBookById(long id) {
-        return composerRepository.findById(id).orElseThrow(()-> new RuntimeException("Book not found"));
+    public Music findMusicById(Long id) {
+        return composerRepository.findById(id).orElseThrow(()-> new RuntimeException("Music not found"));
     }
 
-    public void updateBook(Music newMusic) {
-        Music oldMusic = composerRepository.findById(newMusic.getId())
-                .orElseThrow(()-> new RuntimeException("Book not found"));
+    public void updateMusic(Music newMusic) {
+        Music oldMusic = composerRepository.findById(newMusic.getId()).orElseThrow(()-> new RuntimeException("Music not found"));
 
         oldMusic.setName(newMusic.getName());
 
         composerRepository.save(oldMusic);
     }
 
-    public void deleteBook(Music author) {
-        composerRepository.delete(author);
+    public void deleteMusic(Music composer) {
+        composerRepository.delete(composer);
     }
 }

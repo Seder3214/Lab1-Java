@@ -28,14 +28,14 @@ public class ComposerController {
     )
     @GetMapping
     public ResponseWrapper<List<ComposerDto>> findAll() {
-        return baseResponseService.wrapSuccessResponse(composerService.findAllAuthors());
+        return baseResponseService.wrapSuccessResponse(composerService.findAllComposers());
     }
     @Operation(
             summary = "Получение композитора из ID", description = "Позволяет выгрузить одного композитора из БД"
     )
     @GetMapping("/composer/{id}")
     public ResponseWrapper<ComposerDto> getById(@PathVariable @Min(0) Long id) {
-        return baseResponseService.wrapSuccessResponse(composerService.findAuthorById(id));
+        return baseResponseService.wrapSuccessResponse(composerService.findComposerById(id));
     }
     @Operation(
             summary="Создать композитора", description = "Позволяет создать новую запись о композиторе в БД"
@@ -43,16 +43,16 @@ public class ComposerController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void createAuthor(@RequestBody @Valid ComposerDto composer) {
-        composerService.saveAuthor(composer);
+    public void createComposer(@RequestBody @Valid ComposerDto composer) {
+        composerService.saveComposer(composer);
     }
 
     @Operation(
             summary = "Обновить данные о композиторе", description = "Позволяет обновить информацию о композиторе в БД"
     )
     @PutMapping("/composer/")
-    public void updateAuthor(@RequestBody @Valid ComposerDto composer) {
-        composerService.updateAuthor(composer);
+    public void updateComposer(@RequestBody @Valid ComposerDto composer) {
+        composerService.updateComposer(composer);
     }
 
     @Operation(
@@ -60,8 +60,8 @@ public class ComposerController {
     )
     @DeleteMapping("/composer/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteAuthor(@PathVariable @Min(0) long id) {
-        composerService.deleteAuthorById(id);
+    public void deleteComposer(@PathVariable @Min(0) long id) {
+        composerService.deleteComposerById(id);
     }
 }
 

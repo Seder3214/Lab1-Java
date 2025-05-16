@@ -7,14 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.edu.project.lab.baseresponse.BaseResponseService;
 import ru.edu.project.lab.baseresponse.ErrorType;
 import ru.edu.project.lab.baseresponse.ResponseWrapper;
 
 @Slf4j
+@RestControllerAdvice
 @RequiredArgsConstructor
 public class ExceptionApiHandler {
-    private BaseResponseService baseResponseService;
+    private final BaseResponseService baseResponseService;
 
     @ExceptionHandler(Throwable.class)
     public ResponseWrapper<?> handleOtherException(Throwable t) {
@@ -24,6 +26,7 @@ public class ExceptionApiHandler {
 
     @ExceptionHandler(PenzGtuException.class)
     public ResponseWrapper<?> handlePenzGtuException(PenzGtuException exception) {
+        log.error("Got PenzGtuException {}, message: {}",exception.getClass(), exception.getMessage());
         return baseResponseService.wrapErrorResponse(exception);
     }
 
